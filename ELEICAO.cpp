@@ -1,14 +1,38 @@
 #include <iostream>
 #include <string>
+#include <locale.h>
+#include <fstream>
+
 using namespace std;
+
+	struct Candidato{
+		int numero_can;
+		string nome_can;
+		Candidato* proximo;
+	};
+	struct Eleitor{
+		int numero_ele;
+		string nome_ele;
+		Eleitor* proximo;
+	};
+	struct Fila{
+		Eleitor *inicio, *fim;
+		int total;
+		Fila* proximo;
+	};
+	
+	void InserirCandidatos(int numero_can,string nome_can);
+	void RemoverCandidatos(int numero_can);
+	void ListarCandidatos();
+	
+	void InserirEleitores(int numero_ele,string nome_ele);
+	void RemoverEleitores(int numero_ele);
+	void ListarEleitores();
 
 int main() {
 	setlocale (LC_ALL, "Portuguese");
-	int op;
-	int soma =0;
-	int i=0;
-	string pais[10];
-	int pontos[10]={0,0,0,0,0,0,0,0,0,0};
+	int op_main,op_can,op_ele;
+	
 	system("CLS");
 	do {
 		cout << "- A FESTA DA DEMOCRACIA!!! \n";
@@ -20,66 +44,87 @@ int main() {
 		cout << "| (4) - Relatórios                    | \n";
 		cout << "| (5) - Sair                          | \n";	
 		cout << "|=====================================| \n";
-		cout << "Escolha a opcao: ";
-		cin >> op;
+		cout << "Escolha a opção ou (5) Sair ";
+		cin >> op_main;
 		
-		switch(op){
+		switch(op_main){
 			case 1:
-				for(int i=0; i < 10; i++){
-				
-				   if (i <10){
-				     	cout << "-Cadastro de Candidatos \n";
-					    cout << "Pais: " << i << "\n";
-					    cout << "Informe Nome Pais: \n";
-					    cin >> pais[i];
-					    
-					}else{
-					    cout << "Maximo de Paises é 10!!! \n";
-				}
-			    }  
-
+				do{
+					cout << "-Cadastro de Candidatos \n";
+					cout << "+==================================+ \n";		
+					cout << "| (1) Inserir Candidatos           | \n";
+					cout << "| (2) Remover Candidatos           | \n";				
+					cout << "| (3) Listar  Candidatos           | \n";
+					cout << "| (4) Voltar                       | \n";
+					cout << "|==================================| \n";
+					cout << "Escolha a opção ou (4) Voltar ";
+					cin >> op_can;
+					switch(op_can){
+						case 1:
+							// InserirCandidatos();
+					
+							break;
+						case 2:
+							// RemoverCandidatos();
+					
+							break;
+						case 3:
+							// ListarCandidatos();
+					
+							break;
+						case 4:
+					
+							break;
+						default:
+							cout << "OPÇÃO INVALIDA!!! \n";
+								
+					}
+				}while(op_can != 4);
+					
 				break;
 			case 2:
-				cout << "-Cadastro de Eleitores \n";
-				cout << "OBS: Informe o Numero do pais que ganhou o 9 para empate";
-				int matriz[10][3];
-				for(int linha=0; linha < 10; linha++){
-				
-						cout << "Pais: " << linha <<"=" << pais[linha+0] << " X "<< linha+1 << "=" << pais[linha+1] << "\n";
-						cout << "Informe Resultado: \n";
-						matriz[linha][0]=linha;
-						matriz[linha][1]=linha+1;
-						cin >> matriz[linha][2];
-						linha++;
-											
-				}
-
+				do{
+					cout << "-Cadastro de Eleitores \n";
+					cout << "+==================================+ \n";		
+					cout << "| (1) Inserir Eleitores            | \n";
+					cout << "| (2) Remover Eleitores            | \n";				
+					cout << "| (3) Listar  Eleitores            | \n";
+					cout << "| (4) Voltar                       | \n";
+					cout << "|==================================| \n";
+					cout << "Escolha a opção ou (4) Voltar ";
+					cin >> op_ele;
+					switch(op_ele){
+						case 1:
+							// InserirEleitores();
+					
+							break;
+						case 2:
+							// RemoverEleitores();
+					
+							break;
+						case 3:
+							// ListarEleitores();
+					
+							break;
+						case 4:
+					
+							break;
+						default:
+							cout << "OPÇÃO INVALIDA!!! \n";
+								
+					}
+				}while(op_ele != 4);
+					
+				break;				
 				break;
 			case 3:
 				cout << "-Registro dos Votos \n";
 				
-				for(int linha=0; linha < 10; linha++){
-					if (matriz[linha][2] == 9){
-					   pontos[linha+0]=pontos[linha+0]+1;
-					   pontos[linha+1]=pontos[linha+1]+1;
-					}else {
-					   pontos[matriz[linha][2]]=pontos[matriz[linha][2]]+3;
-					}
-					linha++;
-				}	
-				for(int linha=0; linha < 10; linha++){
-					cout << pais[linha] << " = " << pontos[linha]<< "\n";
-					
-				}
-
 				break;
 			case 4:
 				cout << "-Relatórios \n";
-	            for(int linha=0; linha < 10; linha++){
-					cout << pais[linha] << " = " << pontos[linha]<< "\n";
-					
-				}				
-							
+	            				
+				break;			
 			case 5:
 				break;
 			default:
@@ -87,8 +132,7 @@ int main() {
 				break;
 		}
 		
-	
-	} while(op != 5);
+	} while(op_main != 5);
 		
 return 0;		
 }

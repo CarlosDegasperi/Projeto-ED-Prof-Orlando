@@ -252,7 +252,7 @@ void SobrescreveArquivoCandidato(Candidato *&Lista){
     if (arquivo.is_open()) {
         Candidato *atual = Lista;
         while (atual != NULL) {
-//          arquivo << atual->nome << "| " << atual->numero << endl;
+
 			arquivo << atual->nome << " "   << atual->numero << endl;
             atual = atual->proximo;
         }
@@ -402,8 +402,7 @@ void SobrescreveArquivoEleitor(Eleitor *&Lista){
     if (arquivo.is_open()) {
         Eleitor *atual = Lista;
         while (atual != NULL) {
-//          arquivo << atual->nome << "| " << atual->numero << endl;
-			arquivo << atual->nome << " "  << atual->numero << endl;
+D			arquivo << atual->nome << " "  << atual->numero << endl;
             atual = atual->proximo;
         }
         arquivo.close();
